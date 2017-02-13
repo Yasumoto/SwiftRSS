@@ -59,14 +59,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 5, "")
-                    XCTAssert(dateComponent.day == 25, "")
-                    XCTAssert(dateComponent.month == 9, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 10, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 5)
+                    XCTAssert(dateComponent.day == 25)
+                    XCTAssert(dateComponent.month == 9)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 10)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(dateComponent.timeZone! == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -97,14 +101,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 5, "")
-                    XCTAssert(dateComponent.day == 25, "")
-                    XCTAssert(dateComponent.month == 9, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 10, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 5)
+                    XCTAssert(dateComponent.day == 25)
+                    XCTAssert(dateComponent.month == 9)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 10)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(dateComponent.timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -133,14 +141,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 3, "")
-                    XCTAssert(dateComponent.day == 9, "")
-                    XCTAssert(dateComponent.month == 9, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 11, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 3)
+                    XCTAssert(dateComponent.day == 9)
+                    XCTAssert(dateComponent.month == 9)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 11)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -169,14 +181,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 4, "")
-                    XCTAssert(dateComponent.day == 3, "")
-                    XCTAssert(dateComponent.month == 9, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 9, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 4)
+                    XCTAssert(dateComponent.day == 3)
+                    XCTAssert(dateComponent.month == 9)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 9)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -205,14 +221,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 3, "")
-                    XCTAssert(dateComponent.day == 26, "")
-                    XCTAssert(dateComponent.month == 8, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 14, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 3)
+                    XCTAssert(dateComponent.day == 26)
+                    XCTAssert(dateComponent.month == 8)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 14)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -241,14 +261,18 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 3, "")
-                    XCTAssert(dateComponent.day == 19, "")
-                    XCTAssert(dateComponent.month == 8, "")
-                    XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 10, "")
-                    XCTAssert(dateComponent.minute == 0, "")
-                    XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    XCTAssert(dateComponent.weekday == 3)
+                    XCTAssert(dateComponent.day == 19)
+                    XCTAssert(dateComponent.month == 8)
+                    XCTAssert(dateComponent.year == 2014)
+                    XCTAssert(dateComponent.hour == 10)
+                    XCTAssert(dateComponent.minute == 0)
+                    XCTAssert(dateComponent.second == 0)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -284,7 +308,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 13, "")
                     XCTAssert(dateComponent.minute == 30, "")
                     XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -320,7 +348,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 11, "")
                     XCTAssert(dateComponent.minute == 0, "")
                     XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -384,7 +416,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 10, "")
                     XCTAssert(dateComponent.minute == 0, "")
                     XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.PDT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.PDT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -439,7 +475,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 13, "")
                     XCTAssert(dateComponent.minute == 49, "")
                     XCTAssert(dateComponent.second == 47, "")
-                    XCTAssert(dateComponent.timeZone! == self.GMT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.GMT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -475,7 +515,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 15, "")
                     XCTAssert(dateComponent.minute == 0, "")
                     XCTAssert(dateComponent.second == 0, "")
-                    XCTAssert(dateComponent.timeZone! == self.GMT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.GMT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -541,7 +585,11 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.hour == 23, "")
                     XCTAssert(dateComponent.minute == 53, "")
                     XCTAssert(dateComponent.second == 37, "")
-                    XCTAssert(dateComponent.timeZone! == self.GMT_timeZone, "")
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.GMT_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                    }
                 }
                 else
                 {
@@ -693,10 +741,14 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.day == 21, "")
                     XCTAssert(dateComponent.month == 9, "")
                     XCTAssert(dateComponent.year == 2014, "")
-                    XCTAssert(dateComponent.hour == 8, "")
-                    XCTAssert(dateComponent.minute == 42, "")
-                    XCTAssert(dateComponent.second == 50, "")
-                    XCTAssert(dateComponent.timeZone! == self.DST_timeZone, "")
+                    XCTAssert(dateComponent.hour == 8)
+                    XCTAssert(dateComponent.minute == 42)
+                    XCTAssert(dateComponent.second == 50)
+                    if let timeZone = dateComponent.timeZone {
+                        XCTAssert(timeZone == self.DST_timeZone)
+                    } else {
+                        XCTAssert(false, "timeZone was nil \(dateComponent)")
+                    }
                 }
                 else
                 {
