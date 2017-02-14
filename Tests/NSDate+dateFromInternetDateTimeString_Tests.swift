@@ -34,14 +34,18 @@ class NSDateExtension_Tests: XCTestCase {
         {
             var dateComponent = calendar.dateComponents(calendarComponents, from: date)
             
-            XCTAssert(dateComponent.weekday == 1, "")
-            XCTAssert(dateComponent.day == 19, "")
-            XCTAssert(dateComponent.month == 5, "")
-            XCTAssert(dateComponent.year == 2002, "")
-            XCTAssert(dateComponent.hour == 15, "")
-            XCTAssert(dateComponent.minute == 21, "")
-            XCTAssert(dateComponent.second == 36, "")
-            XCTAssert(dateComponent.timeZone! == GMT_timeZone, "")
+            XCTAssert(dateComponent.weekday == 1)
+            XCTAssert(dateComponent.day == 19)
+            XCTAssert(dateComponent.month == 5)
+            XCTAssert(dateComponent.year == 2002)
+            XCTAssert(dateComponent.hour == 15)
+            XCTAssert(dateComponent.minute == 21)
+            XCTAssert(dateComponent.second == 36)
+            if let timeZone = dateComponent.timeZone {
+                XCTAssert(timeZone == GMT_timeZone)
+            } else {
+                XCTAssert(false, "Timezone was nil: \(dateComponent)")
+            }
         }
         else
         {

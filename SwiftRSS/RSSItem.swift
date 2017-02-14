@@ -84,7 +84,7 @@ class RSSItem: NSObject, NSCoding {
         itemDescription = aDecoder.decodeObject(forKey: "description") as? NSString as String?
         content = aDecoder.decodeObject(forKey: "content") as? NSString as String?
         commentsLink = aDecoder.decodeObject(forKey: "commentsLink") as? URL
-        commentsCount = aDecoder.decodeObject(forKey: "commentsCount") as? Int
+        commentsCount = aDecoder.decodeInteger(forKey: "commentsCount")
         commentRSSLink = aDecoder.decodeObject(forKey: "commentRSSLink") as? URL
         author = aDecoder.decodeObject(forKey: "author") as? String
         categories = aDecoder.decodeObject(forKey: "categories") as? [String]

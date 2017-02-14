@@ -132,7 +132,23 @@ extension Date {
         
         if date == nil
         {
+            // From https://developer.apple.com/reference/foundation/nsdateformatter
+            Date.internetDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            
+            date = Date.internetDateFormatter.date(from: rfc3339_string as String)
+        }
+        
+        if date == nil
+        {
             Date.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZZ"
+            
+            date = Date.internetDateFormatter.date(from: rfc3339_string as String)
+        }
+        
+        if date == nil
+        {
+            // Pulled from https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1
+            Date.internetDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
             
             date = Date.internetDateFormatter.date(from: rfc3339_string as String)
         }
