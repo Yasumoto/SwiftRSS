@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Thibaut LE LEVIER. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class RSSItem: NSObject, NSCoding {
     var title: String?

@@ -13,7 +13,7 @@
 // Thanks to him!
 
 
-import UIKit
+import Foundation
 
 extension Date {
     
