@@ -21,7 +21,7 @@ class RSSParser_Tests: XCTestCase {
     let GMT_timeZone = TimeZone(identifier: "GMT")!
     let DST_timeZone = TimeZone(secondsFromGMT: 60 * 60 * -4)!
     var calendar = Calendar(identifier: .gregorian)
-    let calendar_flags = Set<Calendar.Component>([.weekday, .day, .month, .year, .hour, .minute, .second])
+    let calendar_flags = Set<Calendar.Component>([.weekday, .day, .month, .year, .hour, .minute, .second, .timeZone])
     
     override func setUp() {
         super.setUp()
@@ -59,17 +59,17 @@ class RSSParser_Tests: XCTestCase {
                 {
                     var dateComponent = self.calendar.dateComponents(self.calendar_flags, from: date)
                     
-                    XCTAssert(dateComponent.weekday == 5)
-                    XCTAssert(dateComponent.day == 25)
-                    XCTAssert(dateComponent.month == 9)
-                    XCTAssert(dateComponent.year == 2014)
-                    XCTAssert(dateComponent.hour == 10)
-                    XCTAssert(dateComponent.minute == 0)
-                    XCTAssert(dateComponent.second == 0)
+                    XCTAssertEqual(dateComponent.weekday, 5)
+                    XCTAssertEqual(dateComponent.day, 25)
+                    XCTAssertEqual(dateComponent.month, 9)
+                    XCTAssertEqual(dateComponent.year, 2014)
+                    XCTAssertEqual(dateComponent.hour, 10)
+                    XCTAssertEqual(dateComponent.minute, 0)
+                    XCTAssertEqual(dateComponent.second, 0)
                     if let timeZone = dateComponent.timeZone {
-                        XCTAssert(dateComponent.timeZone! == self.PDT_timeZone)
+                        XCTAssertEqual(timeZone, self.PDT_timeZone)
                     } else {
-                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                        XCTFail("timeZone was nil: \(dateComponent)")
                     }
                 }
                 else

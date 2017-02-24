@@ -13,7 +13,7 @@ class NSDateExtension_Tests: XCTestCase {
     
     let GMT_timeZone = TimeZone(secondsFromGMT: 0)!
     var calendar = Calendar(identifier: .gregorian)
-    let calendarComponents = Set<Calendar.Component>([.weekday, .day, .month, .year, .hour, .minute, .second, .timeZone])
+    let calendarComponents = Set<Calendar.Component>([.timeZone, .weekday, .day, .month, .year, .hour, .minute, .second])
 
     override func setUp() {
         super.setUp()
@@ -211,20 +211,24 @@ class NSDateExtension_Tests: XCTestCase {
     func test_dateFormatter_withDateStringRFC3339Format1_shouldReturnValidDate() {
         
         let dateString = "1996-12-19T16:39:57-0800"
-        let timeZone = TimeZone(secondsFromGMT: -60*60*8)
+        let timeZone = TimeZone(abbreviation: "PST")
         calendar.timeZone = timeZone!
         
         if let date: Date = Date.dateFromInternetDateTimeString(dateString)
         {
             var dateComponent = calendar.dateComponents(calendarComponents, from: date)
             
-            XCTAssert(dateComponent.day == 19, "")
-            XCTAssert(dateComponent.month == 12, "")
-            XCTAssert(dateComponent.year == 1996, "")
-            XCTAssert(dateComponent.hour == 16, "")
-            XCTAssert(dateComponent.minute == 39, "")
-            XCTAssert(dateComponent.second == 57, "")
-            XCTAssert(dateComponent.timeZone! == GMT_timeZone, "")
+            XCTAssert(dateComponent.day == 19)
+            XCTAssert(dateComponent.month == 12)
+            XCTAssert(dateComponent.year == 1996)
+            XCTAssert(dateComponent.hour == 16)
+            XCTAssert(dateComponent.minute == 39)
+            XCTAssert(dateComponent.second == 57)
+            if let timeZone = dateComponent.timeZone {
+                XCTAssertEqual(timeZone, TimeZone(abbreviation: "PST")!)
+            } else {
+                XCTFail("timeZone was nil")
+            }
         }
         else
         {
@@ -234,7 +238,7 @@ class NSDateExtension_Tests: XCTestCase {
     
     func test_dateFormatter_withDateStringRFC3339Format2_shouldReturnValidDate() {
         
-        let dateString = "1937-01-01T12:00:27.87+0020"
+        let dateString = "1937-01-01T12:00:27.87+0200"
         let timeZone = TimeZone(secondsFromGMT: 60*60*2)
         calendar.timeZone = timeZone!
         
@@ -243,13 +247,13 @@ class NSDateExtension_Tests: XCTestCase {
             
             var dateComponent = calendar.dateComponents(calendarComponents, from: date)
             
-            XCTAssert(dateComponent.day == 1, "")
-            XCTAssert(dateComponent.month == 1, "")
-            XCTAssert(dateComponent.year == 1937, "")
-//            XCTAssert(dateComponent.hour == 12, "")
-//            XCTAssert(dateComponent.minute == 0, "")
-            XCTAssert(dateComponent.second == 27, "")
-            XCTAssert(dateComponent.timeZone == GMT_timeZone, "")
+            XCTAssertEqual(dateComponent.day, 1)
+            XCTAssertEqual(dateComponent.month, 1)
+            XCTAssertEqual(dateComponent.year, 1937)
+            XCTAssertEqual(dateComponent.hour, 12)
+            XCTAssertEqual(dateComponent.minute, 0)
+            XCTAssertEqual(dateComponent.second, 27)
+            XCTAssertEqual(dateComponent.timeZone, TimeZone(secondsFromGMT: 60*60*2))
         }
         else
         {
