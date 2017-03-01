@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Thibaut LE LEVIER. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import XCTest
+@testable import SwiftRSS
 
 class RSSParser_Tests: XCTestCase {
     
@@ -109,9 +110,9 @@ class RSSParser_Tests: XCTestCase {
                     XCTAssert(dateComponent.minute == 0)
                     XCTAssert(dateComponent.second == 0)
                     if let timeZone = dateComponent.timeZone {
-                        XCTAssert(dateComponent.timeZone == self.PDT_timeZone)
+                        XCTAssertEqual(timeZone, self.PDT_timeZone)
                     } else {
-                        XCTAssert(false, "timeZone was nil: \(dateComponent)")
+                        XCTFail("timeZone was nil: \(dateComponent)")
                     }
                 }
                 else
