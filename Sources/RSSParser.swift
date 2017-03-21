@@ -44,7 +44,8 @@ class RSSParser: NSObject, XMLParserDelegate {
     
     func parseFeedForRequest(_ request: URLRequest, callback: @escaping (_ feed: RSSFeed?, _ error: NSError?) -> Void)
     {
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
 
             if ((error) != nil)
             {
@@ -59,7 +60,8 @@ class RSSParser: NSObject, XMLParserDelegate {
                 parser.shouldResolveExternalEntities = false
                 parser.parse()
             }
-        }
+        })
+        task.resume()
     }
     
 // MARK: NSXMLParserDelegate
